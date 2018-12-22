@@ -5,32 +5,18 @@ var axios = require("axios");
 var cheerio = require("cheerio");
 
 var app = express();
+var db = require("./models");
+var PORT = 3000;
 
-// Set the app up with morgan.
-// morgan is used to log our HTTP Requests. By setting morgan to 'dev'
-// the :status token will be colored red for server error codes,
-// yellow for client error codes, cyan for redirection codes,
-// and uncolored for all other codes.
+
 app.use(logger("dev"));
-// Parse request body as JSON
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-// Make public a static folder
 app.use(express.static("public"));
 
-// Database configuration
-var databaseUrl = "runescrape";
-var collections = ["scrapes"];
 var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
 mongoose.connect(MONGODB_URI, { useNewUrlParser: true });
 
-// Hook mongojs config to db variable
-var db = mongojs(databaseUrl, collections);
-
-// Log any mongojs errors to console
-db.on("error", function(error) {
-  console.log("Database Error:", error);
-});
 
 app.get("/scrape", function(req, res) {
     // First, we grab the body of the html with axios

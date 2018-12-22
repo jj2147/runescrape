@@ -1,0 +1,494 @@
+/*
+
+
+
+*/
+body {
+    background: black;
+    color: white;
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: 13px;
+    background-image: url(http://www.runescape.com/img/rsp777/bg2.jpg);
+    background-position: top center;
+    background-repeat: repeat-y;
+    text-align: center;
+    margin: 0;
+    min-width: 960px;
+    overflow-y: scroll;
+}
+
+.centerDiv {
+    background: url(http://www.runescape.com/img/rsp777/bg2.jpg) repeat-y scroll center top black;
+    margin: 0 auto;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+}
+
+div#body {
+    width: 765px;
+    margin: 10px auto 10px auto;
+    text-align: left;
+    position: relative;
+}
+
+div,td {
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: 13px;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+img {
+    border: 0;
+}
+
+img a:hover {
+    text-decoration: none;
+}
+
+.titleframe {
+    width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 4px;
+    text-align: center;
+}
+
+.frame {
+    width: 753px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 4px;
+}
+
+.tandc {
+    clear: both;
+    font-size: 11px;
+    margin: auto;
+    position: relative;
+    text-align: center;
+    width: 765px;
+}
+
+.tandc__copy{
+ margin: auto;
+ width: 470px;
+}
+
+.tandc > a {
+    display: block;
+    position: absolute;
+    left: 25px;
+    top: 6px;
+}
+
+.scroll {
+    color: black;
+}
+
+.heading {
+    text-align: center;
+    margin: 6px;
+}
+
+.heading span {
+    width: 125px;
+    margin: 0 auto;
+    display: block;
+    background-image: url(http://www.runescape.com/img/rsp777/smbrownback.jpg);
+    border: 3px solid #3E3B23;
+    border-top: 3px solid #7C774A;
+    border-left: 3px solid #7C774A;
+    background-color: #4D422E;
+    padding: 3px 10px 3px 10px;
+}
+
+a {
+    color: #90c040;
+    text-decoration: none;
+}
+
+.scroll a {
+    color: #7B4F17;
+    font-weight: bold;
+}
+
+.e {
+    border: 2px solid #382418;
+    background-color: black;
+}
+
+.wide_e {
+    background-color: black;
+    border: 2px solid #382418;
+    margin-top: 10px;
+    overflow: hidden;
+    position: relative;
+}
+
+div.horizontalscroll {
+    width: 765px;
+    height: 159px;
+    overflow: hidden;
+    margin: 5px 0;
+    background-color: #C2AB79;
+    background-image: url(http://www.runescape.com/img/rsp777/scroll/horizontal_scroll.gif);
+    position: relative;
+}
+
+div.horizontalscroll-content {
+    margin: 15px 40px;
+    color: #000000;
+    position: relative;
+}
+
+div.widescroll {
+    width: 735px;
+    background-color: #C2AB79;
+    margin: 0 10px 0 15px;
+    position: relative;
+}
+
+div.widescroll-bgimg {
+    width: 745px;
+    position: relative;
+    margin: 0 -5px;
+    background-image: url(http://www.runescape.com/img/rsp777/scroll/backdrop_745.gif);
+    background-repeat: repeat-y;
+}
+
+div.widescroll-content {
+    padding: 25px 10px;
+    color: #000000;
+    position: relative;
+    margin: 0 5px;
+}
+
+img.widescroll-top {
+    position: relative;
+    top: 25px;
+    padding: 0;
+    margin: 0;
+    z-index: 100;
+    display: block;
+}
+
+img.widescroll-bottom {
+    position: relative;
+    padding: 0;
+    margin: 0;
+    top: -25px;
+    display: block;
+}
+
+div.widescroll-content a, div.horizontalscroll-content a, div.narrowscroll-content a {
+    color: #7B4F17;
+    font-weight: bold;
+}
+
+div.narrowscroll-bgimg {
+    width: 457px;
+    position: relative;
+    margin: 0 -5px;
+    background-image: url(http://www.runescape.com/img/rsp777/scroll/scroll457t.gif);
+    background-repeat: repeat-y;
+}
+
+div.narrowscroll-bg {
+    width: 447px;
+    background-color: #C2AB79;
+    margin-left: 10px;
+}
+
+div.narrowscroll-content {
+    padding: 25px 10px;
+    color: #000000;
+    position: relative;
+    margin: 0 5px;
+}
+
+div.narrowscroll-content td {
+    color: #000000;
+}
+
+img.narrowscroll-top {
+    position: relative;
+    top: 25px;
+    padding: 0;
+    margin: 0;
+    z-index: 100;
+    display: block;
+}
+
+img.narrowscroll-bottom {
+    position: relative;
+    padding: 0;
+    margin: 0;
+    top: -25px;
+    display: block;
+}
+
+.widescrollWrapper {
+    margin: auto;
+    position: relative;
+    width: 764px;
+}
+
+.titleBackground {
+    background-position: center top;
+    background-repeat: no-repeat;
+    height: 90px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 4px;
+    width: 759px;
+}
+
+.titleFrame {
+    background-color: black;
+    border: 2px solid #382418;
+    padding: 2px 0;
+    position: relative;
+    text-align: center;
+    width: 155px;
+}
+
+
+.tweet .time a{
+ font-weight:bold;
+ color:#000;
+}
+#twitter{
+    border: 2px inset #CC9933;
+    text-align: center;
+}
+.tweet{
+    border-bottom: 1px solid black;
+    border-top: 1px solid #bb9966;
+    margin: 0 24px;
+    padding: 13px 0;
+    text-align: left;
+}
+.tweet:first-child{
+    border-top: none;
+}
+#twitter a.more{
+    border-top: 1px solid #bb9966;
+    clear: both;
+    display: block;
+    margin: 0 24px;
+    padding: 12px 0;
+    text-align: center;
+}
+#osrsNews{
+ width:75%;
+ margin:auto;
+}
+.osrsArticle{
+ border-bottom: 1px solid #6B7B17;
+ text-align:left;
+ position:relative;
+ overflow:hidden;
+}
+.osrsArticle  figure{
+ float:left;
+ -webkit-margin-start:0px;
+ -webkit-margin-end:20px;
+ position:relative;
+}
+.osrsArticle.video figure a{
+    position:relative;
+    display:block;
+}
+.osrsArticle.video figure a:after{
+ content:'';
+    background:transparent url(http://www.runescape.com/img/rs3/sprite_main.png) no-repeat 0 -428px;
+    position:absolute;
+    left:52px;
+    top:12px;
+    width:64px;
+    height:65px;
+}
+#osrsArticleHolder{
+ position:relative;
+ overflow:auto;
+ text-align:left;
+ margin-bottom:20px;
+}
+#osrsSummaryImage{
+ float:right;
+ width:auto;
+ margin-top: 35px;
+ overflow:auto;
+}
+.osrsArticleContentText{
+ padding-bottom:30px;
+ text-align:left;
+}
+a.osrsRSS{
+ left:735px;
+}
+/*------------- New header macro -------------*/
+.os-banner{
+    background: url('http://www.runescape.com/img/rsp777/title2/rslogo3-gap.png') no-repeat center;
+    display: block;
+    min-height: 135px;
+    text-align: center;
+}
+.os-banner__options{
+    background: black;
+    border: 2px solid #382418;
+    display: inline-block;
+    margin-top: 45px;
+    padding: 3px 15px;
+}
+.os-banner__title{
+    display: block;
+    font-size: 13px;
+    font-weight: bold;
+    margin: 0 auto 3px;
+}
+.os-banner__home,
+.os-banner__child{
+    display: inline-block;
+    font-size: 13px;
+}
+.os-banner ~.contentWrapper {
+    margin-top: 0;
+}
+/*------------- News Archive Styles ------------- */
+.home-main-title{
+    color: #6D4211;
+    font-family: initial;
+    font-size: 3.5em;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+    text-shadow: 1px 1px 1px #000000;
+}
+.news-archive {
+    position: relative;
+}
+.news-archive__filters {
+    background: rgba(60,39,11,0.5);
+    box-shadow: 0 0 3px 3px #4a381f;
+    display: block;
+    margin: 10px 0;
+    padding: 7px 0;
+    text-align: center;
+    width: 100%;
+}
+.news-archive a.news-archive__filter {/*Specificty problems*/
+    background: #000;
+    border: 2px solid #382418;
+    color: #90c040;
+    display: inline-block;
+    font-size: 13px;
+    font-weight: normal;
+    margin: 0 1px;
+    padding: 7px 3px;
+    text-decoration: none;
+}
+.news-archive a.news-archive__filter:hover {
+    text-decoration: underline;
+}
+.news-archive a.news-archive__filter--active {
+    background: #646464;
+    color: #FFFFFF;
+}
+.news-articles__title {
+    font-size: 19px;
+    margin: 50px 0 10px;
+}
+.news-article {
+    display: block;
+    margin: auto;
+    overflow: hidden;
+    padding: 20px 0;
+    position: relative;
+    width: 540px;
+}
+.news-article:after {
+    background: #6B7B17;
+    bottom: 0;
+    content: '';
+    display: block;
+    height: 1px;
+    left: 0;
+    position: absolute;
+    width: 100%;
+}
+.news-article:last-child {
+    margin-bottom: 40px;
+}
+.news-article__figure {
+    float: left;
+    margin: 0;
+    min-height: 130px;
+    width: 175px;
+}
+.news-article__figure-img {
+    border: none;
+    outline: none;
+    color: black;
+    max-height: 175px;
+    max-width: 175px;
+}
+.news-article__details {
+    float: right;
+    text-align: left;
+    width: 350px;
+}
+.news-article__title {
+    font-size: 15px;
+    margin: 0 0 15px;
+}
+.news-article__sub {
+    color: black;
+    display: block;
+    font-size: 12px;
+    font-style: italic;
+    margin-bottom: 15px;
+}
+.news-article__time {
+    position: relative;
+}
+.news-article__time:before {
+    content: '|';
+    display: inline-block;
+    margin: 0 5px;
+}
+.news-article__summary {
+    color: black;
+    font-size: 13px;
+}
+.news-article__read-more {
+    white-space: nowrap;
+}
+.news-archive__pagination {
+    position: relative;
+    text-align: center;
+}
+.news-archive-next,
+.news-archive-prev {
+    display: inline-block;
+    position: relative;
+    text-align: center;
+}
+.news-archive-prev:before {
+    content: '<';
+    display: inline-block;
+    margin: 0 3px 0 5px;
+}
+.news-archive-next:after {
+    content: '>';
+    display: inline-block;
+    margin: 0 5px 0 3px;
+}
+
+.footer__jagex-img {
+    width: 80px;
+}

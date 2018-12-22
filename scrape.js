@@ -9,11 +9,14 @@ axios.get("http://services.runescape.com/m=news/archive?oldschool=1").then(funct
       // Now, we grab every h2 within an article tag, and do the following:
       $("article").each(function(i, element) {
         // Save an empty result object
+        var result = {};
         var pic = $(this).find("img").attr("src");
         var title = $(this).find("h3 a").text();
         var link = $(this).find("h3 a").attr("href");
-
-        console.log(link);
-        
+        result.pic=pic;
+        result.title=title;
+        result.link=link;
+        console.log(result);
+                
       });
     });
