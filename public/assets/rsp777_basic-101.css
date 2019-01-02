@@ -3,6 +3,13 @@
 
 
 */
+/* .collapse-content{
+}
+
+.collapse{
+
+} */
+
 body {
     background: black;
     color: white;
@@ -39,6 +46,7 @@ div,td {
 
 a:hover {
     text-decoration: underline;
+    color:#90c040;
 }
 
 img {
@@ -388,7 +396,7 @@ a.osrsRSS{
     display: inline-block;
     font-size: 13px;
     font-weight: normal;
-    margin: 0 1px;
+    margin: 0 3px;
     padding: 7px 3px;
     text-decoration: none;
 }

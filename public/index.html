@@ -5,8 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Page Title</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="assets/style.css" />
-    <link rel="stylesheet" type="text/css" media="screen" href="assets/buttons-100.css" />
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+    <script src="http://cdn.date-fns.org/v1.9.0/date_fns.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    
     <link rel="stylesheet" type="text/css" media="screen" href="assets/fonts-100.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="assets/rsp777_basic-101.css" />
 
@@ -29,9 +34,10 @@
                                 <div class="news scroll">
                                     <h1 class="home-main-title">News</h1>
                                     <div id="archiveSelect" class="news-archive">
-                                        <h4 class="news-archive__title">Select a year</h4>
-                                        <menu class="news-archive__filters"></menu>
+                                        <div id="year-div" class="news-archive__filters"></div>
+                                        <div id="month-div" class="news-archive__filters"></div>
                                     </div>
+                                    <div class="news-articles"></div>
                                 </div>
                             </div>
                         </div>
@@ -41,5 +47,7 @@
         </div>
 
     </div>
+
+    <script src="app.js"></script>
 </body>
 </html>
