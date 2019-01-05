@@ -1,6 +1,5 @@
 
 
-
 var today = new Date();
 var month = dateFns.getMonth(today) + 1;
 var year = dateFns.getYear(today);
@@ -9,13 +8,11 @@ var selectedYear;
 var selectedMonth;
 
 for(let y = 2013; y <= year; y++){
-    $("#year-div").append(`<a class="news-archive__filter" tabindex="0" data-year=${y}>${y}</a>`);
-
-    // Without tabindex, Bootstrap turns text black on hover, a:not([href]):not([tabindex]):hover {color: inherit;}
+    $("#year-div").append(`<a class="news-archive__filter" data-year=${y}>${y}</a>`);
 }
 
 for(let m = 0; m < months.length; m++){
-    $("#month-div").append(`<a class="news-archive__filter" tabindex="0" data-month=${m+1}>${months[m]}</a>`);
+    $("#month-div").append(`<a class="news-archive__filter" data-month=${m+1}>${months[m]}</a>`);
 }
 
 function select(element){
@@ -26,8 +23,6 @@ function select(element){
 
 select($(`a[data-year=${year}]`));
 select($(`a[data-month=${month}]`));
-
-  
 
 $(".news-archive__filter").on("click", function(){
     select($(this));
@@ -44,12 +39,13 @@ $(".news-archive__filter").on("click", function(){
         }
     });
 
-});
+});  
+
 
 function printArticles(data){
     data.forEach(e => {
         $(".news-articles").append(
-            `<article class="news-article"> 
+            `<article class="news-article" article-id=${e._id}> 
                 <figure class="news-article__figure">
                     <a href=${e.link}><img class="news-article__figure-img" src=${e.img}></a>
                 </figure>
@@ -60,12 +56,11 @@ function printArticles(data){
                     <span class="news-article__sub">${e.type}<time class="news-article__time">${e.time}</time></span>
                     <p class="news-article__summary">${e.summary}<a href=${e.link}>Read More...</a></p>
                 </div>
-                <a class="news-article__summary" role="button" data-toggle="collapse" href="#collapse${e.order}">comment</a>
-                <div class="collapse" id="collapse${e.order}">
-                    <form id="form${e.order}">
-                        <input id="comment${e.order}" type="text">
-                        <button type="submit">Submit</button>
-                    </form>
+
+                <a class="comment news-article__summary">comment</a>
+                <div class="collapse" article-id=${e._id}>
+                    <input type="text">
+                    <button class="comment-btn">Submit</button>
                 </div>
 
             </article>`
@@ -74,16 +69,41 @@ function printArticles(data){
 }
 
 
-$("form").submit(function(){
+function getNotes(articleID){
     $.ajax({
-        method: "POST",
-        url: "/articles/" + selectedYear + '/' + selectedMonth
+        method: "GET",
+        url: "/articles/" + articleID,
     }).then(function(data){
-        if(data.length === 0){
-            $(".news-articles").append("<h3 class='news-article__title'>No articles found<h3>");
-        }else{
-            printArticles(data);
-        }
+        console.log("noteeeeeeeeeeeee");
+        
+        console.log(data.note);
+        
+    });
+
+}
+
+$(function(){
+
+    $(document).on("click", "a.comment", function(){
+        $(this).next().slideToggle("fast");
+        let articleID = $(this).parent().attr("article-id");
+        getNotes(articleID);
+    });
+
+    
+    $(document).on("click", ".comment-btn", function(){
+        let comment = $(this).prev().val();
+        let articleID = $(this).parent().attr("article-id");
+        $.ajax({
+            method: "POST",
+            url: "/articles/" + articleID,
+            data: {
+                body:comment
+            }
+        }).then(function(){
+            $("input").empty();
+        });
+        
     });
 
 });
