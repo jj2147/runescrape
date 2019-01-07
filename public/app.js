@@ -59,8 +59,9 @@ function printArticles(data){
 
                 <a class="comment news-article__summary">comment</a>
                 <div class="collapse" article-id=${e._id}>
-                    <input type="text">
-                    <button class="comment-btn">Submit</button>
+                    ${e.note.forEach(note => "<p>"+note+"</p>")}
+                    <input id="comment-input" type="text">
+                    <button class="comment-submit">Submit</button>
                 </div>
 
             </article>`
@@ -69,30 +70,28 @@ function printArticles(data){
 }
 
 
-function getNotes(articleID){
-    $.ajax({
-        method: "GET",
-        url: "/articles/" + articleID,
-    }).then(function(data){
-        console.log("noteeeeeeeeeeeee");
+// function getNotes(articleID){
+//     $.ajax({
+//         method: "GET",
+//         url: "/articles/" + articleID,
+//     }).then(function(data){
+//         console.log("noteeeeeeeeeeeee");
         
-        console.log(data.note);
+//         console.log(data.note);
         
-    });
+//     });
 
-}
+// }
 
 $(function(){
 
     $(document).on("click", "a.comment", function(){
         $(this).next().slideToggle("fast");
-        let articleID = $(this).parent().attr("article-id");
-        getNotes(articleID);
     });
 
-    
-    $(document).on("click", ".comment-btn", function(){
-        let comment = $(this).prev().val();
+
+    $(document).on("click", ".comment-submit", function(){
+        let comment = $("#comment-input").val();
         let articleID = $(this).parent().attr("article-id");
         $.ajax({
             method: "POST",
@@ -100,8 +99,9 @@ $(function(){
             data: {
                 body:comment
             }
-        }).then(function(){
-            $("input").empty();
+        }).then(function(data){
+            console.log($(this));
+            
         });
         
     });
