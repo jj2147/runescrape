@@ -57,15 +57,21 @@ function printArticles(data){
                     <p class="news-article__summary">${e.summary}<a href=${e.link}>Read More...</a></p>
                 </div>
 
-                <a class="comment news-article__summary">comment</a>
+                <a class="expand" news-article__summary">comment</a>
                 <div class="collapse" article-id=${e._id}>
-                    ${e.note.forEach(note => "<p>"+note+"</p>")}
                     <input id="comment-input" type="text">
                     <button class="comment-submit">Submit</button>
                 </div>
 
             </article>`
         );
+
+        if(e.note.length != 0){
+            e.note.forEach(n => {
+                $(`.collapse[article-id=${e._id}]`)
+                .prepend(`<p class="comment"><a class="delete-comment">X</a>${n.body}</p>`);
+            });
+        }
     });
 }
 
@@ -85,7 +91,12 @@ function printArticles(data){
 
 $(function(){
 
-    $(document).on("click", "a.comment", function(){
+    $(document).on("click", ".delete-comment", function(){
+        
+        $(this).parent().remove();
+    });
+
+    $(document).on("click", "a.expand", function(){
         $(this).next().slideToggle("fast");
     });
 
@@ -100,7 +111,6 @@ $(function(){
                 body:comment
             }
         }).then(function(data){
-            console.log($(this));
             
         });
         

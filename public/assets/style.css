@@ -1,4 +1,11 @@
-/* body {
-    background-image: url("background.jpg");
-    background-size: cover;
-} */
+.collapse{
+    display: none;
+}
+
+.comment{
+    text-align: left;
+}
+
+.delete-comment{
+    margin-right: 10px;
+}
