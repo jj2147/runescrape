@@ -3,13 +3,11 @@ const logger = require("morgan");
 const mongoose = require("mongoose");
 const axios = require("axios");
 const cheerio = require("cheerio");
-// const exphbs = require("express-handlebars");
-var app = express();
 const db = require("./models");
-const PORT = 3000;
 
-// app.engine("handlebars", exphbs({ defaultLayout: "main" }));
-// app.set("view engine", "handlebars");
+var app = express();
+
+const PORT = 3000;
 
 app.use(logger("dev"));
 app.use(express.urlencoded({ extended: true }));
@@ -19,6 +17,8 @@ app.use(express.static("public"));
 const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
 mongoose.connect(MONGODB_URI, { useNewUrlParser: true });
 
+
+//check if the page has already been scraped and saved
 app.get("/check/:year/:month", function(req, res){
     db.Article.findOne({year: req.params.year, month: req.params.month}).then(function(found){        
         found ? res.redirect("/articles/" + req.params.year + '/' + req.params.month) :
@@ -26,9 +26,11 @@ app.get("/check/:year/:month", function(req, res){
     });
 });
 
-app.get("/scrape/:year/:month", function(req, res) {
 
-    axios.get(`http://services.runescape.com/m=news/archive?oldschool=1&year=${req.params.year}&month=${req.params.month}`).then(function(response) {
+// to do: scrape the 2nd page if "next" button exists
+app.get("/scrape/:year/:month", function(req, res) {
+    axios.get(`http://services.runescape.com/m=news/archive?oldschool=1&year=${req.params.year}&month=${req.params.month}`)
+    .then(function(response) {
 
         var $ = cheerio.load(response.data);
 
@@ -46,48 +48,46 @@ app.get("/scrape/:year/:month", function(req, res) {
             result.year = req.params.year;
             result.month = req.params.month;
             results.push(result);
-
         });
 
-        db.Article.create(results).then(function(){
-            console.log("created article doc!!!!!!!");            
-            res.json(results);
+        db.Article.create(results).then(function(articles){
+            console.log("created articles!!!!!!!");
+            res.json(articles);
         });
-        
+
     });
+
 });
 
 
+//get a page that has already been scraped
 app.get("/articles/:year/:month", function(req, res) {
     db.Article.find({year: req.params.year, month: req.params.month}).sort({"order":1})
-        .populate("note")
-        .then(function(data){
-            res.json(data);
+    .populate("note")
+    .then(function(articles){
+        res.json(articles);
     });
 });
 
+
+//add note to article
 app.post("/articles/:id", function(req, res){    
     db.Note.create(req.body)
     .then(function(dbNote) {
-      // If a Note was created successfully, find one Article with an `_id` equal to `req.params.id`. Update the Article to be associated with the new Note
-      // { new: true } tells the query that we want it to return the updated User -- it returns the original by default
-      // Since our mongoose query returns a promise, we can chain another `.then` which receives the result of the query
-      return db.Article.findOneAndUpdate({ _id: req.params.id }, {$push:{ note: dbNote._id }}, { new: true });
-    }).then(function(dbArticle) {
-        res.json(dbArticle);
-    }).catch(function(err) {
-        res.json(err);
-    });
+        res.json(dbNote);
+        return db.Article.findOneAndUpdate({ _id: req.params.id }, {$push:{ note: dbNote._id }}, { new: true });
+    })
 });
 
 
-// app.get("/articles/:id", function(req, res){    
-//     db.Article.findOne({_id: req.params.id})
-//     .populate("note")
-//     .then(function(dbArticle) {
-//         res.json(dbArticle);
-//     });
-// });
+//delete note
+app.delete("/notes/:id", function(req, res){
+    db.Note.deleteOne({_id: req.params.id})
+    .then(function(){
+        console.log("deleted");
+    });
+
+});
 
 
 app.listen(PORT, function() {
